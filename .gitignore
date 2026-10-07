@@ -1,0 +1,5 @@
+# original camera files stay local; the site uses the web-sized copies in img/
+/IMG_*
+*.MOV
+*.mov
+*.HEIC
