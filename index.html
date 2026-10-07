@@ -811,8 +811,17 @@ button{font:inherit;color:inherit}
    ============================================================ */
 @media (max-width:640px){
   body,.hero,.sec{background-attachment:scroll}
-  .shot{--rx:0deg !important;--ry:0deg !important}
-  .shot:hover{transform:rotate(var(--tilt,0deg))}
+  /* iOS Safari mis-paints 3D transforms, blend modes and SVG filters on
+     HTML as stray rectangles, so phones get flat 2D equivalents */
+  .shot,.shot:hover{transform:rotate(var(--tilt,0deg))}
+  body::after{display:none}
+  .tape{mix-blend-mode:normal;opacity:.82}
+  .paper::before{filter:drop-shadow(0 8px 16px rgba(58,38,70,.18))}
+  .paper::after,.lined::after{filter:none}
+  .paper .under{filter:drop-shadow(0 10px 18px rgba(58,38,70,.16))}
+  .tag-torn::before{filter:drop-shadow(0 3px 7px rgba(60,40,70,.16))}
+  .sign::before{filter:drop-shadow(0 5px 12px rgba(60,40,70,.15))}
+  #about .spread-art figure{width:86%;margin-inline:auto}
   .hero-art{gap:12px;padding:8px 2px}
   .cluster--fan{padding:6px 10px}
   .cluster--fan .shot{width:112%}
